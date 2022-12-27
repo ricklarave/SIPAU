@@ -20,15 +20,14 @@ async function add_residente( residente ) {
 //     return residente
 // }
 
-// async function delete_residente( residente ) {
-//     let results = await pool.query('DELETE FROM residente WHERE residente_id=$1', [residente.id])
-//     console.log(results)
-//     return residente
-// }
+async function delete_residente( residente ) {
+    let results = await pool.query('DELETE FROM residente WHERE idresidente=$1', [residente])
+    return residente
+}
 
 module.exports = {
     add: add_residente,
     get: get_residente,
     // update: update_residente,
-    // delete: delete_residente,
+    delete: delete_residente,
 }

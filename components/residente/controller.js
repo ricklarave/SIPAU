@@ -7,9 +7,6 @@ function get_residente( filtro_residente ) {
 }
 
 function add_residente( residente ) {
-
-    console.log("********************************")
-
     return new Promise((resolve, reject) => {
         if (!residente.manzana || !residente.villa || !residente.cedulaDueño || 
             !residente.nombresDueño || !residente.apellidosDueño || !residente.cedulaResidente || 
@@ -33,16 +30,16 @@ function add_residente( residente ) {
 //     })
 // }
 
-// function delete_residente( residente ) {
-//     return new Promise((resolve, reject) => {
-//         storage.delete( residente )
-//         resolve( residente )
-//     })
-// }
+function delete_residente( residente ) {
+    return new Promise((resolve, reject) => {
+        storage.delete( residente )
+        resolve( residente )
+    })
+}
 
 module.exports = {
     get_residente,
     add_residente,
     // update_residente,
-    // delete_residente,
+    delete_residente,
 }
