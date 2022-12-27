@@ -39,6 +39,3 @@ function insertarResidente(){
         console.log("Data: " + data + "\nStatus: " + status);
     });
 }
-
-
-
