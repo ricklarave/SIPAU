@@ -1,0 +1,16 @@
+CREATE TABLE residente (
+    idResidente BIGSERIAL NOT NULL,
+    manzana integer NOT NULL,
+    villa integer NOT NULL,
+    cedulaDueño character varying(10),
+    nombresDueño character varying(50),
+    apellidosDueño character varying(50),
+    cedulaResidente character varying(10),
+    nombresResidente character varying(50),
+    apellidosResidente character varying(50),
+    telefonoResidente character varying(10),
+    correoResidente character varying(40),
+    fechaAlquiler timestamp without time zone
+);
+
+ALTER TABLE residente ADD CONSTRAINT PK_residente PRIMARY KEY (idResidente);
