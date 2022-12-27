@@ -1,0 +1,96 @@
+<!-- http://localhost:3000/html/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/estilos.css">
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/script.js"></script>
+</head>
+<body>
+    
+    <div class="container">
+		<div class="row mt-3">
+			<div class="col">
+				<form action="">
+					<div class="form-group">
+						<label for="id">idPresidente</label>
+						<input type="text" class="form-control" placeholder="id" name="nombre" id="id">
+					</div>
+
+                    <div class="form-group">
+						<label for="manzana">Manzana</label>
+						<select name="manzana" id="manzana" class="form-control">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+						</select>
+					</div>
+
+                    <div class="form-group">
+						<label for="villa">Villa</label>
+						<select name="villa" id="villa" class="form-control">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label for="nombre">Cedula del dueño</label>
+						<input type="number" class="form-control" placeholder="Cedula del dueño" name="nombre" id="cedulaDueño">
+					</div>
+
+                    <div class="form-group">
+						<label for="nombre">Nombres del dueño</label>
+						<input type="text" class="form-control" placeholder="Nombres del dueño" name="nombre" id="nombresDueño">
+					</div>
+
+                    <div class="form-group">
+						<label for="nombre">Apellidos del dueño</label>
+						<input type="text" class="form-control" placeholder="Apellidos del dueño" name="nombre" id="apellidosDueño">
+					</div>
+
+                    <div class="form-group">
+						<label for="nombre">Cedula del residente</label>
+						<input type="number" class="form-control" placeholder="Cedula del residente" name="nombre" id="cedulaResidente">
+					</div>
+
+                    <div class="form-group">
+						<label for="nombre">Nombres del residente</label>
+						<input type="text" class="form-control" placeholder="Nombres del residente" name="nombre" id="nombresResidente">
+					</div>
+
+                    <div class="form-group">
+						<label for="nombre">Apellidos del residente</label>
+						<input type="text" class="form-control" placeholder="Apellidos del residente" name="nombre" id="apellidosResidente">
+					</div>
+
+                    <div class="form-group">
+						<label for="nombre">Telefono del residente</label>
+						<input type="number" class="form-control" placeholder="Telefono del residente" name="nombre" id="telefonoResidente">
+					</div>
+
+                    <div class="form-group">
+						<label for="nombre">Correo del residente</label>
+						<input type="email" class="form-control" placeholder="Correo del residente" name="nombre" id="correoResidente">
+					</div>
+
+                    <div class="form-group">
+						<label for="nombre">Fecha de Alquiler</label>
+						<input type="datetime" class="form-control" placeholder="Fecha de Alquiler" name="nombre" id="fechaAlquiler">
+					</div>
+
+					<button class="btn btn-success" type="button" onclick="insertarResidente()">Guardar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

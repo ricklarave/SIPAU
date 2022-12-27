@@ -17,7 +17,6 @@ async function add_residente( residente ) {
 
 async function update_residente( residente ) {
     let results = await pool.query('UPDATE residente SET manzana=$2, villa=$3, ceduladueño=$4, nombresdueño=$5, apellidosdueño=$6, cedularesidente=$7, nombresresidente=$8, apellidosresidente=$9, telefonoresidente=$10, correoresidente=$11, fechaalquiler=$12 WHERE idresidente=$1', [residente.idresidente, residente.manzana, residente.villa, residente.cedulaDueño, residente.nombresDueño, residente.apellidosDueño, residente.cedulaResidente, residente.nombresResidente, residente.apellidosResidente, residente.telefonoResidente, residente.correoResidente, residente.fechaAlquiler])
-    
     return residente
 }
 
