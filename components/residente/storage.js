@@ -15,10 +15,11 @@ async function add_residente( residente ) {
     return residente
 }
 
-// async function update_residente( residente ) {
-//     let results = await pool.query('UPDATE residente SET nombre=$1 WHERE residente_id=$2', [residente.nombre, residente.id])
-//     return residente
-// }
+async function update_residente( residente ) {
+    let results = await pool.query('UPDATE residente SET manzana=$2, villa=$3, ceduladueño=$4, nombresdueño=$5, apellidosdueño=$6, cedularesidente=$7, nombresresidente=$8, apellidosresidente=$9, telefonoresidente=$10, correoresidente=$11, fechaalquiler=$12 WHERE idresidente=$1', [residente.idresidente, residente.manzana, residente.villa, residente.cedulaDueño, residente.nombresDueño, residente.apellidosDueño, residente.cedulaResidente, residente.nombresResidente, residente.apellidosResidente, residente.telefonoResidente, residente.correoResidente, residente.fechaAlquiler])
+    
+    return residente
+}
 
 async function delete_residente( residente ) {
     let results = await pool.query('DELETE FROM residente WHERE idresidente=$1', [residente])
@@ -28,6 +29,6 @@ async function delete_residente( residente ) {
 module.exports = {
     add: add_residente,
     get: get_residente,
-    // update: update_residente,
+    update: update_residente,
     delete: delete_residente,
 }

@@ -19,16 +19,16 @@ function add_residente( residente ) {
     })
 }
 
-// function update_residente( residente ) {
-//     return new Promise((resolve, reject) => {
-//         let resultado = storage.update( residente )
-//         if (resultado) {
-//             return resolve( residente )
-//         } else {
-//             return reject('No existe el residente.')
-//         }
-//     })
-// }
+function update_residente( residente ) {
+    return new Promise((resolve, reject) => {
+        let resultado = storage.update( residente )
+        if (resultado) {
+            return resolve( residente )
+        } else {
+            return reject('No existe el residente.')
+        }
+    })
+}
 
 function delete_residente( residente ) {
     return new Promise((resolve, reject) => {
@@ -40,6 +40,6 @@ function delete_residente( residente ) {
 module.exports = {
     get_residente,
     add_residente,
-    // update_residente,
+    update_residente,
     delete_residente,
 }
