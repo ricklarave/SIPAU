@@ -8,26 +8,25 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Residente</title>
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
-	<link rel="stylesheet" href="../css/estilos.css">
-
+	<link rel="stylesheet" href="../css/residenteEstilos.css">
 </head>
 
 <body>
 
 	<div class="container">
 
-		<div class="input-group col-12 col-md-8 mb-3 mt-5">
-			<label class="col-md-3 mb-3" for="buscar">Buscar</label>
-			<input type="text" class="form-control" name="buscar" id="buscar" placeholder="Buscar">
+		<div id="bloqueBuscar" class="input-group col-12 col-md-12 mt-5 mb-5">
+			<label class="col-md-6 mb-6" for="buscar">Buscar</label>
+			<input type="text" class="form-control" name="buscar" id="buscarNombre" placeholder="Nombre del dueño">
 			<span class="input-group-btn">
-				<button class="btn btn-primary">Buscar</button>
+				<button class="btn btn-primary" onclick="listarResidentes(1)">Buscar</button>
 			</span>
 		</div>
 
 		<div class="row mt-3">
 			<div class="col">
 
-				<button class="btn btn-primary" data-toggle="modal" data-target="#fm-modal">Registrar</button>
+				<button id="registrar" class="btn btn-primary" data-toggle="modal" data-target="#fm-modal" onclick="limpiarFormulario()">Registrar</button>
 				<div class="modal fade" id="fm-modal" tabindex="-1" role="dialog" aria-labelledby="fm-modal"
 					aria-hidden="true">
 					<div class="modal-dialog">
@@ -47,7 +46,7 @@
 											<div class="form-group">
 												<label for="id">idPresidente</label>
 												<input type="text" class="form-control" placeholder="id" name="nombre"
-													id="id">
+													id="idModal">
 											</div>
 
 											<div class="form-group">
@@ -56,6 +55,8 @@
 													<option value="1">1</option>
 													<option value="2">2</option>
 													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
 												</select>
 											</div>
 
@@ -65,6 +66,8 @@
 													<option value="1">1</option>
 													<option value="2">2</option>
 													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
 												</select>
 											</div>
 
@@ -144,36 +147,23 @@
 			</div>
 		</div>
 
-		<table class=" mt-5 table table-bordered table-hover table-reponsive">
+		<table class="mt-5 table table-bordered table-hover table-reponsive">
 
-			<thead class="thead-default">
-				<th>No</th>
-				<th>Manzana</th>
-				<th>Villa</th>
-				<th>Cedula</th>
-				<th>Nombres y Apellidos</th>
-				<th>Modificar</th>
-				<th>Eliminar</th>
+			<thead id="cabecera" class="thead-default">
 			</thead>
 
-			<tr>
-				<td>1</td>
-				<td>5</td>
-				<td>2</td>
-				<td>0987561236</td>
-				<td>Alex Fernando Mera Vicuña</td>
-				<td>Modificar</td>
-				<td>Eliminar</td>
-			</tr>
+			<tbody id="pantalla">
+
+			</tbody>
 
 		</table>
 
 	</div>
-
+	
 	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/residente.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/script.js"></script>
-
+	
 </body>
 
 </html>
