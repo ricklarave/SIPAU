@@ -14,3 +14,25 @@ CREATE TABLE residente (
 );
 
 ALTER TABLE residente ADD CONSTRAINT PK_residente PRIMARY KEY (idResidente);
+
+CREATE TABLE administrador (
+    idAdministrador BIGSERIAL NOT NULL,
+    cedulaAdministrador character varying(10),
+    nombresAdministrador character varying(50),
+    apellidosAdministrador character varying(50)
+);
+
+CREATE TABLE usuario (
+    idUsuario BIGSERIAL NOT NULL,
+    cedulaUsuario character varying(10),
+    nombresUsuario character varying(50),
+    apellidosUsuario character varying(50),
+    nick_Usuario character varying(50),
+    claveUsuario character varying(50),
+    perfilUsuario character varying(50),
+    estadoUsuario character varying(10)
+);
+
+select * from residente;
+select * from administrador;
+select * from usuario;

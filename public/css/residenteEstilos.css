@@ -13,6 +13,10 @@
     margin-left: 99%;
 }
 
+#idModal, #idResidente, #idGroup{
+    display:none;
+}
+
 /* #registrar{
     margin-left:98%;
 } */

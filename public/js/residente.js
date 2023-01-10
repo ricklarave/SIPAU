@@ -136,7 +136,7 @@ function insertarResidente() {
             data: data,
             success: function (result, status) {
                 console.log(status);
-          
+
             },
         });
 
@@ -174,8 +174,9 @@ function insertarResidente() {
         }
 
         $.post("/residente", data, function (data, status) {
-            listarResidentes();
+
             if (status == "success") {
+                listarResidentes();
                 limpiarFormulario();
                 alert("Status: " + status);
             } else {
