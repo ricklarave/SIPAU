@@ -1,0 +1,162 @@
+<!-- http://localhost:3000/html/usuario.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Usuario</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/usuarioEstilos.css">
+
+</head>
+
+<body>
+
+	<div class="container">
+
+		<div id="bloqueBuscar" class="input-group col-12 col-md-12 mt-5 mb-5">
+			<label class="col-md-6 mb-6" for="buscar">Buscar</label>
+			<input type="text" class="form-control" name="buscar" id="buscarCedula" placeholder="Ingrese cedula">
+			<span class="input-group-btn">
+				<button class="btn btn-primary" onclick="listarUsuarios(1)">Buscar</button>
+			</span>
+		</div>
+
+		<div class="row mt-3">
+			<div class="col">
+
+				<button id="registrar" class="btn btn-primary" data-toggle="modal" data-target="#fm-modal"
+					onclick="limpiarFormulario()">Registrar</button>
+				<div class="modal fade" id="fm-modal" tabindex="-1" role="dialog" aria-labelledby="fm-modal"
+					aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="">Registar un Usuario</h5>
+								<button class="close" data-dismiss="modal" aria-label="Cerrar">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+
+							<div class="modal-body">
+
+								<div class="row mt-3">
+									<div class="col">
+										<form action="">
+
+
+
+											<div class="form-group row">
+												<label for="inputPassword3" class="col-sm-2 col-form-label">Cedula</label>
+												<div class="col-sm-5">
+													<input type="text" class="form-control" id="cedulaUsuario" placeholder=""
+														onkeyup="buscarusuario()">
+												</div>
+												<!-- <button type="button" class="btn btn-info mb-2" onclick="buscarResidente()">Buscar</button> -->
+											</div>
+
+
+											<div class="form-group row" style="margin-bottom: 24px;">
+												<label for="cedula_tabla" class="col-sm-2 col-form-label"></label>
+												<div class="col-md-7">
+													<select name="cedula_tabla" id="cedula_tabla" class="form-control"
+														onchange="cargarNomApellido()">
+														<!-- cargaremos las etiquetas de option con javascript -->
+													</select>
+												</div>
+											</div>
+
+
+											<fieldset disabled>
+												<div class="form-group row">
+													<label for="nombresUsuario" class="col-sm-2 col-form-label">Nombres</label>
+													<div class="col-sm-7">
+														<input type="text" class="form-control" id="nombresUsuario" placeholder="">
+													</div>
+												</div>
+
+												<div class="form-group row">
+													<label for="apellidosUsuario" class="col-sm-2 col-form-label">Apellidos</label>
+													<div class="col-sm-7">
+														<input type="text" class="form-control" id="apellidosUsuario" placeholder="">
+													</div>
+												</div>
+											</fieldset>
+
+
+											<div class="form-group row">
+												<label for="nick_Usuario" class="col-sm-2 col-form-label">Usuario</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="nick_Usuario" placeholder="">
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<label for="claveUsuario" class="col-sm-2 col-form-label">Clave</label>
+												<div class="col-sm-5">
+													<input type="password" class="form-control" id="claveUsuario" placeholder="">
+												</div>
+												<small id="passwordHelpInline" class="text-muted" style="padding-top: 10px;">
+													Debe tener entre 8 y 20 caracteres.
+												</small>
+											</div>
+
+											<div class="form-group row">
+												<label for="perfilUsuario" class="col-sm-2 col-form-label">Perfil</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="perfilUsuario" placeholder="">
+												</div>
+											</div>
+
+											<div class="form-group row" style="margin-bottom: 24px;">
+												<label for="estado" class="col-sm-2 col-form-label">Estado</label>
+												<div class="col-md-9">
+													<select name="estado" id="estadoUsuario" class="form-control">
+														<option value="1">Inactivo</option>
+														<option value="2">Activo</option>
+													</select>
+												</div>
+											</div>
+
+
+											
+										</form>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="modal-footer">
+								<button class="btn btn-success" type="button" onclick="insertarUsuario()">Guardar</button>
+								<button class="btn btn-default" data-dismiss="modal" >Cerrar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<table class="mt-5 table table-bordered table-hover table-reponsive">
+
+			<thead id="cabecera" class="thead-default">
+			</thead>
+
+			<tbody id="pantalla">
+
+			</tbody>
+
+		</table>
+
+	</div>
+
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/usuario.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+
+	
+</body>
+
+</html>

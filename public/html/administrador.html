@@ -1,0 +1,106 @@
+<!-- http://localhost:3000/html/administrador.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Administrador</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/administradorEstilos.css">
+</head>
+
+<body>
+
+	<div class="container">
+
+		<div id="bloqueBuscar" class="input-group col-12 col-md-12 mt-5 mb-5">
+			<label class="col-md-6 mb-6" for="buscar">Buscar</label>
+			<input type="text" class="form-control" name="buscar" id="buscarAdministrador" placeholder="Numero de cedula">
+			<span class="input-group-btn">
+				<button class="btn btn-primary" onclick="listarAdministrador(1)">Buscar</button>
+			</span>
+		</div>
+
+		<div class="row mt-3">
+			<div class="col">
+
+				<button id="registrar" class="btn btn-primary" data-toggle="modal" data-target="#fm-modal" onclick="limpiarFormulario()">Registrar</button>
+				<div class="modal fade" id="fm-modal" tabindex="-1" role="dialog" aria-labelledby="fm-modal"
+					aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="">Registrar Administrador</h5>
+								<button class="close" data-dismiss="modal" aria-label="Cerrar">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+
+							<div class="modal-body">
+
+								<div class="row mt-3">
+									<div class="col">
+										<form action="">
+											<div class="form-group">
+												<label for="id">idAdministrador</label>
+												<input type="text" class="form-control" placeholder="id" name="nombre"
+													id="idModal">
+											</div>
+
+											<div class="form-group">
+												<label for="nombre">Cedula:</label>
+												<input type="text" class="form-control" placeholder="Cedula"
+													name="cedula" id="cedula">
+											</div>
+
+											<div class="form-group">
+												<label for="nombre">Nombres:</label>
+												<input type="text" class="form-control" placeholder="Nombres"
+													name="nombres" id="nombres">
+											</div>
+
+											<div class="form-group">
+												<label for="nombre">Apellidos:</label>
+												<input type="text" class="form-control"
+													placeholder="Apellidos" name="apellidosAdministrador" id="apellidos">
+											</div>											
+							
+										</form>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="modal-footer">
+								<button class="btn btn-success" type="button" onclick="insertarAdministrador()">Guardar</button>
+								<button class="btn btn-default" data-dismiss="modal">Cerrar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<table class="mt-5 table table-bordered table-hover table-reponsive">
+
+			<thead id="cabecera" class="thead-default">
+			</thead>
+
+			<tbody id="pantalla">
+
+			</tbody>
+
+		</table>
+
+	</div>
+	
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/administrador.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	
+</body>
+
+</html>
