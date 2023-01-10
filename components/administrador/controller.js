@@ -8,7 +8,7 @@ function get_administrador( filtro_administrador ) {
 
 function add_administrador( administrador ) {
     return new Promise((resolve, reject) => {
-        if (!administrador.cedula || !administrador.nombresAdministrador || !administrador.apellidosAdministrador) {
+        if (!administrador.cedulaadministrador || !administrador.nombresadministrador || !administrador.apellidosadministrador) {
             return reject('Complete todos los campos.')
         }
         storage.add( administrador )
