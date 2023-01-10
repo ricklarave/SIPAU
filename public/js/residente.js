@@ -99,8 +99,6 @@ function insertarResidente() {
 
     if (document.getElementById("idModal").value != "") {
 
-        console.log("Put")
-
         var idresidente = document.getElementById("idModal").value;
         var manzana = document.getElementById("manzana").value;
         var villa = document.getElementById("villa").value;
@@ -135,16 +133,19 @@ function insertarResidente() {
             type: "PUT",
             data: data,
             success: function (result, status) {
-                console.log(status);
-
+                if (status == "success") {
+                    listarResidentes();
+                    limpiarFormulario();
+                    alert("Residente Actualizado");
+                } else {
+                    alert("Error al actualizar el Residente")
+                }
             },
         });
 
         listarResidentes();
 
     } else {
-
-        console.log("Post")
 
         var manzana = document.getElementById("manzana").value;
         var villa = document.getElementById("villa").value;
@@ -178,7 +179,7 @@ function insertarResidente() {
             if (status == "success") {
                 listarResidentes();
                 limpiarFormulario();
-                alert("Status: " + status);
+                alert("Residente Guardado");
             } else {
                 alert("Error al registrar el Residente")
             }
@@ -219,11 +220,15 @@ function eliminarResidente(parametro) {
         type: "DELETE",
         data: data,
         success: function (result, status) {
-            console.log(status);
+            if (status == "success") {
+                listarResidentes();
+                limpiarFormulario();
+                alert("Residente Eliminado");
+            } else {
+                alert("Error al eliminar el Residente")
+            }
         },
     });
-
-    listarResidentes();
 
 }
 
