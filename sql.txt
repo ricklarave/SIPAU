@@ -20,4 +20,23 @@ CREATE TABLE administrador (
     cedulaAdministrador character varying(10),
     nombresAdministrador character varying(50),
     apellidosAdministrador character varying(50)
+<<<<<<< HEAD
 );
+=======
+);
+
+CREATE TABLE usuario (
+    idUsuario BIGSERIAL NOT NULL,
+    cedulaUsuario character varying(10),
+    nombresUsuario character varying(50),
+    apellidosUsuario character varying(50),
+    nick_Usuario character varying(50),
+    claveUsuario character varying(50),
+    perfilUsuario character varying(50),
+    estadoUsuario character varying(10)
+);
+
+select * from residente;
+select * from administrador;
+select * from usuario;
+>>>>>>> 674603a7eed786a9914e7da772b67907404eb5d7
