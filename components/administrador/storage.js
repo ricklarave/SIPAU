@@ -1,15 +1,26 @@
 const pool = require('./../../bd')
 
 async function get_administrador( filtro_administrador ) {
-    console.log("entra a get administrador del storage")
+
     let results = null
-    if (filtro_administrador) {
-        results = await pool.query('SELECT * FROM administrador WHERE cedulaadministrador LIKE $1', [ '%' + filtro_administrador + '%' ])
-    } else {
-        results = await pool.query('SELECT * FROM administrador')
+
+    if (!isNaN(filtro_administrador)) {       //TRUE=> VACIO || INT
+        if (filtro_administrador == "") {    //Vacio
+            filtro_administrador = filtro_administrador || null;
+            results = await pool.query('SELECT * FROM administrador')
+        } else {                            //INT
+            filtro_administrador = parseInt(filtro_administrador);
+            results = await pool.query('SELECT * FROM administrador WHERE idadministrador = $1', [filtro_administrador])
+        }
     }
-    console.log(results.rows)
+    else if (isNaN(filtro_administrador)) { //FALSE=> STRING
+        filtro_administrador = String(filtro_administrador);
+        // results = await pool.query('SELECT * FROM residente WHERE nombresDueño = $1', [filtro_residente])
+        results = await pool.query("SELECT * FROM administrador WHERE nombresadministrador like '"+ filtro_administrador +"%'")
+    }
+
     return results.rows
+
 }
 
 

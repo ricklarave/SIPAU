@@ -2,7 +2,7 @@ const storage = require('./storage')
 
 function get_administrador( filtro_administrador ) {
     return new Promise((resolve, reject) => {
-        resolve( storage.get( filtro_administrador ) )
+        resolve( storage.get(filtro_administrador) )
     })
 }
 

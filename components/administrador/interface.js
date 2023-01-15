@@ -6,7 +6,7 @@ const route = express.Router()
 
 route.get('/', function(req, res) {
     console.log(req.query.parametro)
-    const filtro_administrador = req.query.parametro || null
+    const filtro_administrador = req.query.parametro;
     controller.get_administrador( filtro_administrador )
         .then( (data) => response.success(req, res, data, 200) )
         .catch( (error) => response.error(req, res, error, 500) )

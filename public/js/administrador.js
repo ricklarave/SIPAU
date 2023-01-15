@@ -6,7 +6,7 @@ function listarAdministrador(parametroBuscar) {
     var $cabecera = $("#cabecera");
 
     var $tr = $("<tr></tr>");
-    $tr.append("<th>Id</th>");
+    $tr.append("<th>No</th>");
     $tr.append("<th>Cedula</th>");
     $tr.append("<th>Nombres</th>");
     $tr.append("<th>Apellidos</th>");
@@ -33,8 +33,8 @@ function listarAdministrador(parametroBuscar) {
                 $tr.append("<td>" + respuesta.data[i].apellidosadministrador + "</td>");
 
                 console.log(respuesta.data[i].idadministrador+ "METODO LISTAR" );
-                $tr.append("<td><button value='" + respuesta.data[i].idadministrador + "' onclick='modificarAdministrador(this)' class='btn btn-primary modificar' data-toggle='modal' data-target='#fm-modal'>Modificar</button></td>");
-                $tr.append("<td><button type='button' value='" + respuesta.data[i].idadministrador + "'  onclick='eliminarAdministrador(this)' class='btn btn-danger eliminar'>Elminar</button></td>");
+                $tr.append("<td><button type='button' value='" + respuesta.data[i].idadministrador + "' onclick='modificarAdministrador(this)' class='btn btn-primary modificar' data-toggle='modal' data-target='#fm-modal'>Modificar</button></td>");
+                $tr.append("<td><button type='button' value='" + respuesta.data[i].idadministrador + "' onclick='eliminarAdministrador(this)' class='btn btn-danger eliminar'>Eliminar</button></td>");
 
                 $pantalla.append($tr);
 
@@ -140,6 +140,7 @@ function insertarAdministrador() {
 }
 
 function modificarAdministrador(parametro) {
+    console.log(parametro.value)
 
     $.get("/administrador?parametro=" + parametro.value, function (respuesta) {
 
