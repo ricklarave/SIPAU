@@ -96,15 +96,20 @@ function insertarAdministrador() {
             type: "PUT",
             data: data,
             success: function (result, status) {
-                console.log(status);
+                if (status == "success") {
+                    listarAdministrador();
+                    limpiarFormulario();
+                    alert("Administrador Actualizado");
+                } else {
+                    alert("Error al actualizar el administrador")
+                }
+
             },
         });
-
         listarAdministrador();
 
-    } else {
 
-        console.log("Post")
+    } else {
 
         var cedula = document.getElementById("cedula").value;
         var nombres = document.getElementById("nombres").value;
@@ -119,12 +124,13 @@ function insertarAdministrador() {
         }
 
         $.post("/administrador", data, function (data, status) {
-            listarAdministrador();
             if (status == "success") {
+                listarAdministrador();
                 limpiarFormulario();
-                alert("Status: " + status);
+                alert("Administrador Guardado");
+
             } else {
-                alert("Error al registrar el Administrador")
+                alert("Error al registrar al Administrador")
             }
 
         });
@@ -134,8 +140,10 @@ function insertarAdministrador() {
 }
 
 function modificarAdministrador(parametro) {
-    console.log(parametro.value)
+
     $.get("/administrador?parametro=" + parametro.value, function (respuesta) {
+
+        console.log("Entra al metodo Mostrar")
 
         document.getElementById("idModal").value = respuesta.data[0].idadministrador;
         document.getElementById("cedula").value = respuesta.data[0].cedulaadministrador;
@@ -155,11 +163,15 @@ function eliminarAdministrador(parametro) {
         type: "DELETE",
         data: data,
         success: function (result, status) {
-            console.log(status);
+            if (status == "success") {
+                listarAdministrador();
+                limpiarFormulario();
+                alert("Administrador Eliminado");
+            } else {
+                alert("Error al eliminar Administrador")
+            }
         },
     });
-
-    listarAdministrador();
 
 }
 
@@ -171,3 +183,21 @@ function limpiarFormulario() {
     document.getElementById("apellidos").value = "";
 
 }
+// function modificarAdministrador(){
+//     var idadministrador = document.getElementById("idModal").value;
+//     var data = { "idadministrador": idadministrador }
+//     console.log(data)
+
+//     $.ajax({
+//         url: "/administrador",
+//         type: "UPDATE",
+//         data: data,
+//         success: function (result, status) {
+//             console.log(status);
+//             console.log("Entro a MODIFICAR");
+
+//         }
+//     });
+
+//     listarAdministrador();
+// }

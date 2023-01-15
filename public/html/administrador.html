@@ -17,7 +17,7 @@
 
 		<div id="bloqueBuscar" class="input-group col-12 col-md-12 mt-5 mb-5">
 			<label class="col-md-6 mb-6" for="buscar">Buscar</label>
-			<input type="text" class="form-control" name="buscar" id="buscarAdministrador" placeholder="Numero de cedula">
+			<input type="text" class="form-control" name="buscar" id="buscarAdministrador" placeholder="Escriba la cedula">
 			<span class="input-group-btn">
 				<button class="btn btn-primary" onclick="listarAdministrador(1)">Buscar</button>
 			</span>
@@ -43,9 +43,11 @@
 								<div class="row mt-3">
 									<div class="col">
 										<form action="">
+											<!-- <div class="form-group" style="display: none; opacity: 0;"> -->
 											<div class="form-group">
+											
 												<label for="id">idAdministrador</label>
-												<input type="text" class="form-control" placeholder="id" name="nombre"
+												<input type="text" class="form-control" placeholder="id" name="id"
 													id="idModal">
 											</div>
 
@@ -74,6 +76,7 @@
 							</div>
 
 							<div class="modal-footer">
+								<!-- <button class="btn btn-success" type="button" onclick="modificarAdministrador()">Modificar</button> -->
 								<button class="btn btn-success" type="button" onclick="insertarAdministrador()">Guardar</button>
 								<button class="btn btn-default" data-dismiss="modal">Cerrar</button>
 							</div>

@@ -20,9 +20,6 @@ CREATE TABLE administrador (
     cedulaAdministrador character varying(10),
     nombresAdministrador character varying(50),
     apellidosAdministrador character varying(50)
-<<<<<<< HEAD
-);
-=======
 );
 
 CREATE TABLE usuario (
@@ -39,4 +36,4 @@ CREATE TABLE usuario (
 select * from residente;
 select * from administrador;
 select * from usuario;
->>>>>>> 674603a7eed786a9914e7da772b67907404eb5d7
+
