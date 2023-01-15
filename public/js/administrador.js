@@ -68,6 +68,8 @@ function listarAdministrador(parametroBuscar) {
 
                 indice += 1
             }
+            document.getElementById("buscarAdministrador").value = "";
+
 
         });
     }
@@ -150,6 +152,7 @@ function modificarAdministrador(parametro) {
         document.getElementById("cedula").value = respuesta.data[0].cedulaadministrador;
         document.getElementById("nombres").value = respuesta.data[0].nombresadministrador;
         document.getElementById("apellidos").value = respuesta.data[0].apellidosadministrador;
+        
 
     });
 
@@ -184,21 +187,53 @@ function limpiarFormulario() {
     document.getElementById("apellidos").value = "";
 
 }
-// function modificarAdministrador(){
-//     var idadministrador = document.getElementById("idModal").value;
-//     var data = { "idadministrador": idadministrador }
-//     console.log(data)
 
-//     $.ajax({
-//         url: "/administrador",
-//         type: "UPDATE",
-//         data: data,
-//         success: function (result, status) {
-//             console.log(status);
-//             console.log("Entro a MODIFICAR");
+function soloNumeros(e) {
+    console.log("e", e)
+    key = e.keyCode
+    console.log("key", key)
+    if (key != 46 && key != 39) { //46 es . y 39 es '
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = "0123456789";
+        especiales = [8, 37, 39, 46]; //8 es espacio 37 es tecla derecha 39 es tecla izquierda y 46 es delete
 
-//         }
-//     });
+        tecla_especial = false
+        for (var i in especiales) {
+            if (key == especiales[i]) {
+                tecla_especial = true;
+                break;
+            }
+        }
 
-//     listarAdministrador();
-// }
+        if (letras.indexOf(tecla) == -1 && !tecla_especial)
+            return false;
+
+    } else {
+        return false;
+    }
+}
+
+function soloLetras(e) {
+    console.log("e", e)
+    key = e.keyCode
+    console.log("key", key)
+    if (key != 46 && key != 39) { //46 es . y 39 es '
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = "asdfghjklqwert yuiopzxcvbnmñ";
+        especiales = [8, 37, 39, 46]; //8 es espacio 37 es tecla derecha 39 es tecla izquierda y 46 es delete
+
+        tecla_especial = false
+        for (var i in especiales) {
+            if (key == especiales[i]) {
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if (letras.indexOf(tecla) == -1 && !tecla_especial)
+            return false;
+
+    } else {
+        return false;
+    }
+}
