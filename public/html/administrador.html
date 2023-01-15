@@ -17,7 +17,7 @@
 
 		<div id="bloqueBuscar" class="input-group col-12 col-md-12 mt-5 mb-5">
 			<label class="col-md-6 mb-6" for="buscar">Buscar</label>
-			<input type="text" class="form-control" name="buscar" id="buscarAdministrador" placeholder="Nombres">
+			<input type="text" class="form-control" name="buscar" id="buscarAdministrador" placeholder="Nombres" onkeypress="return soloLetras(event)" maxlength="50">
 			<span class="input-group-btn">
 				<button class="btn btn-primary" onclick="listarAdministrador(1)">Buscar</button>
 			</span>
@@ -43,30 +43,28 @@
 								<div class="row mt-3">
 									<div class="col">
 										<form action="">
-											<!-- <div class="form-group" style="display: none; opacity: 0;"> -->
-											<div class="form-group">
-											
+											<div class="form-group" style="display: none; opacity: 0;">										
 												<label for="id">idAdministrador</label>
 												<input type="text" class="form-control" placeholder="id" name="id"
-													id="idModal">
+													id="idModal" " >
 											</div>
 
 											<div class="form-group">
 												<label for="nombre">Cedula:</label>
-												<input type="text" class="form-control" placeholder="Cedula"
-													name="cedula" id="cedula">
+												<input type="text" class="form-control" placeholder="Cedula" maxlength="10"
+													name="cedula" id="cedula" onkeypress="return soloNumeros(event)">
 											</div>
 
 											<div class="form-group">
 												<label for="nombre">Nombres:</label>
-												<input type="text" class="form-control" placeholder="Nombres"
-													name="nombres" id="nombres">
+												<input type="text" class="form-control" placeholder="Nombres" maxlength="50"
+													name="nombres" id="nombres" onkeypress="return soloLetras(event)">
 											</div>
 
 											<div class="form-group">
 												<label for="nombre">Apellidos:</label>
 												<input type="text" class="form-control"
-													placeholder="Apellidos" name="apellidosAdministrador" id="apellidos">
+													placeholder="Apellidos" name="apellidosAdministrador" id="apellidos" maxlength="50" onkeypress="return soloLetras(event)">
 											</div>											
 							
 										</form>
@@ -76,7 +74,6 @@
 							</div>
 
 							<div class="modal-footer">
-								<!-- <button class="btn btn-success" type="button" onclick="modificarAdministrador()">Modificar</button> -->
 								<button class="btn btn-success" type="button" onclick="insertarAdministrador()">Guardar</button>
 								<button class="btn btn-default" data-dismiss="modal">Cerrar</button>
 							</div>
