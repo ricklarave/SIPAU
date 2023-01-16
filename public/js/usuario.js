@@ -261,9 +261,9 @@ function eliminarusuario(parametro) {
             if (status == "success") {
                 listarUsuarios();
                 limpiarFormulario();
-                alert("Residente Eliminado");
+                alert("Usuario Eliminado");
             } else {
-                alert("Error al eliminar el Residente")
+                alert("Error al eliminar el Usuario")
             }
         },
     });

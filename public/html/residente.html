@@ -74,8 +74,8 @@
 
 											<div class="form-group">
 												<label for="nombre">Cedula del dueño</label>
-												<input type="number" class="form-control" placeholder="Cedula del dueño"
-													name="cedulaDueño" id="cedulaDueño" maxlength="10">
+												<input type="text" maxlength="10" class="form-control" placeholder="Cedula del dueño"
+													name="cedulaDueño" id="cedulaDueño" onkeypress="return soloNumeros(event)">
 											</div>
 
 											<div class="form-group">
@@ -93,9 +93,9 @@
 
 											<div class="form-group">
 												<label for="nombre">Cedula del residente</label>
-												<input type="number" class="form-control"
+												<input type="text"  class="form-control"
 													placeholder="Cedula del residente" name="cedulaResidente"
-													id="cedulaResidente" maxlength="10" >
+													id="cedulaResidente" onkeypress="return soloNumeros(event)" maxlength="10">
 											</div>
 
 											<div class="form-group">
@@ -114,7 +114,7 @@
 
 											<div class="form-group">
 												<label for="nombre">Telefono del residente</label>
-												<input type="number" class="form-control" maxlength="10"
+												<input type="number" onKeyDown="if(this.value.length==10) return false;" class="form-control" maxlength="10"
 													placeholder="Telefono del residente" name="telefonoResidente"
 													id="telefonoResidente" maxlength="10">
 											</div>
