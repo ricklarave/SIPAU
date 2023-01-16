@@ -5,11 +5,7 @@ const controller = require('./controller')
 const route = express.Router()
 
 route.get('/', function(req, res) {
-    
-    const filtro_usuario = req.query.parametro|| null 
-
-    console.log(filtro_usuario)
-    console.log("interface:",filtro_usuario)
+    const filtro_usuario = req.query.parametro || "";
     controller.get_usuario( filtro_usuario )
         .then( (data) => response.success(req, res, data, 200) )
         .catch( (error) => response.error(req, res, error, 500) )

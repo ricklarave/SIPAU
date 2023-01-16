@@ -9,7 +9,7 @@
 	<title>Usuario</title>
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/usuarioEstilos.css">
-
+	
 </head>
 
 <body>
@@ -18,7 +18,9 @@
 
 		<div id="bloqueBuscar" class="input-group col-12 col-md-12 mt-5 mb-5">
 			<label class="col-md-6 mb-6" for="buscar">Buscar</label>
-			<input type="text" class="form-control" name="buscar" id="buscarCedula" placeholder="Ingrese cedula">
+			<input type="text" class="form-control" name="buscar" id="buscarNombre" placeholder="Ingrese nombres" maxlength="50"
+			onkeypress="return soloLetras(event)" onkeyup="espacios(this), this.value=this.value.replace(/^\s+/,'');"> 
+			
 			<span class="input-group-btn">
 				<button class="btn btn-primary" onclick="listarUsuarios(1)">Buscar</button>
 			</span>
@@ -45,16 +47,19 @@
 								<div class="row mt-3">
 									<div class="col">
 										<form action="">
-
+											<div id="idGroup" class="form-group">
+												<label id="idUsuario" for="id">idUsuario</label>
+												<input type="text" class="form-control" placeholder="id" name="nombre"
+													id="idModal">
+											</div>
 
 
 											<div class="form-group row">
 												<label for="inputPassword3" class="col-sm-2 col-form-label">Cedula</label>
 												<div class="col-sm-5">
-													<input type="text" class="form-control" id="cedulaUsuario" placeholder=""
-														onkeyup="buscarusuario()">
+													<input type="text" class="form-control" id="cedulaUsuario" placeholder="" maxlength="10"
+														onkeyup="buscarUsuario()" onkeypress="return soloNumeros(event)">
 												</div>
-												<!-- <button type="button" class="btn btn-info mb-2" onclick="buscarResidente()">Buscar</button> -->
 											</div>
 
 
@@ -80,7 +85,7 @@
 												<div class="form-group row">
 													<label for="apellidosUsuario" class="col-sm-2 col-form-label">Apellidos</label>
 													<div class="col-sm-7">
-														<input type="text" class="form-control" id="apellidosUsuario" placeholder="">
+														<input type="text" class="form-control" id="apellidosUsuario" placeholder="">														
 													</div>
 												</div>
 											</fieldset>
@@ -89,39 +94,42 @@
 											<div class="form-group row">
 												<label for="nick_Usuario" class="col-sm-2 col-form-label">Usuario</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="nick_Usuario" placeholder="">
+													<input type="text" class="form-control" id="nick_Usuario" placeholder="" maxlength="30"
+													 onkeypress="return soloNumLetras(event)" onkeyup="this.value=this.value.replace(/^\s+/,'');">
+													
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label for="claveUsuario" class="col-sm-2 col-form-label">Clave</label>
 												<div class="col-sm-5">
-													<input type="password" class="form-control" id="claveUsuario" placeholder="">
+													<input type="password" class="form-control" id="claveUsuario" placeholder="" maxlength="20"
+													onblur="rangoClave()" onkeypress="return soloClave(event)">
 												</div>
 												<small id="passwordHelpInline" class="text-muted" style="padding-top: 10px;">
-													Debe tener entre 8 y 20 caracteres.
+													Debe tener entre 5 a 20 caracteres.
 												</small>
 											</div>
 
 											<div class="form-group row">
 												<label for="perfilUsuario" class="col-sm-2 col-form-label">Perfil</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="perfilUsuario" placeholder="">
+													<input type="text" class="form-control" id="perfilUsuario" placeholder="" maxlength="30"
+													onkeypress="return soloNumLetras(event)" onkeyup="this.value=this.value.replace(/^\s+/,'');">
 												</div>
 											</div>
 
+							
 											<div class="form-group row" style="margin-bottom: 24px;">
 												<label for="estado" class="col-sm-2 col-form-label">Estado</label>
 												<div class="col-md-9">
 													<select name="estado" id="estadoUsuario" class="form-control">
-														<option value="1">Inactivo</option>
-														<option value="2">Activo</option>
+														<option value="Activo">Activo</option>
+														<option value="Inactivo">Inactivo</option>
 													</select>
 												</div>
-											</div>
+										  </div>
 
-
-											
 										</form>
 									</div>
 								</div>

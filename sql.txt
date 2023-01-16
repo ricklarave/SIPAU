@@ -27,9 +27,9 @@ CREATE TABLE usuario (
     cedulaUsuario character varying(10),
     nombresUsuario character varying(50),
     apellidosUsuario character varying(50),
-    nick_Usuario character varying(50),
-    claveUsuario character varying(50),
-    perfilUsuario character varying(50),
+    nick_Usuario character varying(30),
+    claveUsuario character varying(20),
+    perfilUsuario character varying(30),
     estadoUsuario character varying(10)
 );
 
