@@ -10,11 +10,11 @@ function listarResidentes(parametroBuscar) {
     $tr.append("<th>Manzana</th>");
     $tr.append("<th>Villa</th>");
     $tr.append("<th>Cedula Dueño</th>");
-    $tr.append("<th>Nombres del Dueño</th>");
-    $tr.append("<th>Apellidos del Dueño</th>");
+    $tr.append("<th>Nombres Dueño</th>");
+    $tr.append("<th>Apellidos Dueño</th>");
     $tr.append("<th>Cedula Residente</th>");
-    $tr.append("<th>Nombres del Residente</th>");
-    $tr.append("<th>Apellidos del Residente</th>");
+    $tr.append("<th>Nombres Residente</th>");
+    $tr.append("<th>Apellidos Residente</th>");
     $tr.append("<th>Telefono Residente</th>");
     $tr.append("<th>Correo Residente</th>");
     $tr.append("<th>Fecha Alquiler</th>");
@@ -245,4 +245,29 @@ function limpiarFormulario() {
     document.getElementById("telefonoResidente").value = "";
     document.getElementById("correoResidente").value = "";
     document.getElementById("fechaAlquiler").value = "";
+}
+
+function soloLetras(e) {
+    console.log("e", e)
+    key = e.keyCode
+    console.log("key", key)
+    if (key != 46 && key != 39) { //46 es . y 39 es '
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = "asdfghjklqwert yuiopzxcvbnmñ";
+        especiales = [8, 37, 39, 46]; //8 es espacio 37 es tecla derecha 39 es tecla izquierda y 46 es delete
+
+        tecla_especial = false
+        for (var i in especiales) {
+            if (key == especiales[i]) {
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if (letras.indexOf(tecla) == -1 && !tecla_especial)
+            return false;
+
+    } else {
+        return false;
+    }
 }
