@@ -22,6 +22,8 @@ CREATE TABLE administrador (
     apellidosAdministrador character varying(50)
 );
 
+ALTER TABLE administrador ADD CONSTRAINT PK_administrador PRIMARY KEY (idAdministrador);
+
 CREATE TABLE usuario (
     idUsuario BIGSERIAL NOT NULL,
     cedulaUsuario character varying(10),
@@ -32,6 +34,32 @@ CREATE TABLE usuario (
     perfilUsuario character varying(30),
     estadoUsuario character varying(10)
 );
+
+ALTER TABLE usuario ADD CONSTRAINT PK_usuario PRIMARY KEY (idUsuario);
+
+CREATE TABLE pagoAlicuota (
+    idpago BIGSERIAL NOT NULL,
+	idresidente integer NOT NULL,
+    anio integer NOT NULL,
+    mes integer NOT NULL,
+    fechapago timestamp without time zone,
+    valor decimal(7,2),
+    estado character varying(10),--PENDIENTE =>0 --PAGADA =>1 --EN MORA =>2
+	idevidencia BIGSERIAL NOT NULL
+);
+
+ALTER TABLE pagoAlicuota ADD CONSTRAINT PK_pagoAlicuota PRIMARY KEY (idpago);
+ALTER TABLE pagoAlicuota ADD CONSTRAINT FK_pagoAlicuota FOREIGN KEY (idresidente) REFERENCES "residente"(idresidente);
+
+CREATE TABLE datosTransaccion (
+    idevidencia integer NOT NULL,
+	numerotramite character varying(10),
+	banco character varying(10),
+    fechapago timestamp without time zone,
+    valorpago decimal(7,2),
+    comprobante bytea
+);
+
 
 select * from residente;
 select * from administrador;
