@@ -1,7 +1,6 @@
 .container {
     padding: 0;
     margin: 0;
-    margin-left: 10%;
 }
 
 #bloqueBuscar {
@@ -11,7 +10,7 @@
 
 #registrar {
     position: relative;
-    margin-left: 99%;
+    margin-left: 81%;
 }
 
 #idModal, #idResidente, #idGroup{
@@ -19,6 +18,6 @@
 }
 
 table{
-    margin-left: 10%;
+    margin-left: -17%;
     text-align: center;
 }

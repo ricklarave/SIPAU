@@ -1,0 +1,59 @@
+<!-- http://localhost:3000/html/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/fondos.css">
+
+</head>
+
+<body>
+
+	<div class="container-lg" style="background-color:#f5eeee0d;">
+		<div class="align-content-center">
+			<div class="col-md-6 offset-md-3 align-content-center" style="margin-top:120px">
+				<h5 class="card-title text-center" style="font-size:50px; color:rgb(254, 126, 77); ">SIPAU</h5>
+				<center>
+					<img src="../img/login.PNG" alt="Login" class="img-user me-2" style="width: 100px; height: 100px;">
+				</center>
+			</div>
+
+			<div class="col-md-4 offset-md-4">
+				<form>
+					<div class="form-group">
+						<label for="exampleInputEmail1" style="color:rgb(255, 255, 255);">Usuario</label>
+						<input type="text" class="form-control" id="nick_Usuario" placeholder="" maxlength="30"
+							onkeypress="return soloNumLetras(event)" onkeyup="this.value=this.value.replace(/^\s+/,'');">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1" style="color:rgb(255, 255, 255);">Contraseña</label>
+						<input type="password" class="form-control" id="claveUsuario" placeholder="" maxlength="20"
+							onblur="rangoClave()" onkeypress="return soloClave(event)">
+						<small id="passwordHelpInline" style="padding-top: 10px; color:rgb(255, 255, 255);">
+							Debe tener entre 5 a 20 caracteres.
+						</small>
+					</div>
+
+
+					<center>
+						<button type="button" class="btn" style="background-color: chocolate; color:rgb(255, 255, 255);"
+							onclick="validarLogin()">Iniciar Sesion</button>
+						<!-- <button type="button" class="btn btn-danger" style="margin-left:120px;" onclick="close_tab()">Cerrar</button> -->
+					</center>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/login.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+</body>
+
+</html>

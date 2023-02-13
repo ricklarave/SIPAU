@@ -396,3 +396,10 @@ espacios = function (input) {
         input.value = input.value.replace('  ', ' ');//sustituimos dos espacios seguidos por uno 
     }
 }
+
+function Salir() {
+        
+    window.open("http://localhost:3000/html/menuAdministrador.html"); //
+    window.close("http://localhost:3000/html/usuario.html");
+     
+ }

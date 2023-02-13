@@ -10,7 +10,7 @@
 
 #registrar {
     position: relative;
-    margin-left: 81%;
+    margin-left: 78%;
 }
 
 #idModal, #idResidente, #idGroup{
@@ -19,5 +19,9 @@
 
 table{
     margin-left: 0%;
+    text-align: center;
+}
+
+h3{
     text-align: center;
 }

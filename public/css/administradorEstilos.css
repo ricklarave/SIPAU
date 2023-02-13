@@ -1,8 +1,6 @@
 .container {
     padding: 0;
     margin: 0;
-    margin-left: 10%;
-
 }
 
 #bloqueBuscar {
@@ -12,13 +10,14 @@
 
 #registrar {
     position: relative;
-    margin-left: 99%;
+    margin-left: 81%;
 }
 
 table{
-    margin-left: 20%;
+    margin-left: 0%;
     text-align: center;
 }
+
 th{
     text-align: center;
 }
