@@ -1,6 +1,6 @@
 listarPago();
 
-function listarPago(idResidente) {
+function listarPago(idresidente) {
 
     $("#cabecera").empty();
     var $cabecera = $("#cabecera");
@@ -21,8 +21,7 @@ function listarPago(idResidente) {
 
     var indice = 1
 
-
-    $.get("/pagoAlicuota?parametro=" + idResidente, function (respuesta) {
+    $.get("http://localhost:3000/pagoAlicuota?parametro=" +idresidente, function (respuesta) {
 
 
         $("#pantalla").empty();
@@ -40,7 +39,7 @@ function listarPago(idResidente) {
            
 
 
-            $tr.append("<td><button value='" + respuesta.data[i].idresidente + "' onclick='modificarResidente(this)' class='btn btn-light modificar' data-toggle='modal' data-target='#fm-modal'> <img src='../img/nube.PNG' style='width: 30px; height: 30px;'></img> </button></td>");
+            $tr.append("<td><button value='" + respuesta.data[i].idresidente + "' class='btn btn-light' data-toggle='modal' data-target='#fm-modal'> <img src='../img/nube.PNG' style='width: 30px; height: 30px;'></img> </button></td>");
             
 
             $pantalla.append($tr);
@@ -49,6 +48,16 @@ function listarPago(idResidente) {
         }
 
     });
+
+
+    $.get("/residente?parametro=" + idresidente, function (respuesta) {
+
+        for (let i = 0; i < respuesta.data.length; i++) {
+            document.getElementById("nombreResidente").value = respuesta.data[i].nombresresidente +' '+ respuesta.data[i].apellidosresidente
+            document.getElementById("fechaInicio").value = respuesta.data[i].fechaalquiler
+        }
+    });
+
 
 }
 
