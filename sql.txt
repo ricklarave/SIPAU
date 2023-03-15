@@ -163,5 +163,3 @@ WHERE PA.idresidente = R.idresidente;
 SELECT * FROM pagoAlicuota WHERE idpago = 1
 SELECT * FROM pagoAlicuota WHERE idresidente = 1
 
-
-
