@@ -41,7 +41,7 @@ async function add_pagoAlicuota(pagoAlicuota) {
 }
 
 async function update_pagoAlicuota(pagoAlicuota) {
-    let results = await pool.query('UPDATE pagoalicuota SET idresidente=$2, anio=$3, mes=$4, fechapago=$5, valor=$6, estado=$7 WHERE idpago=$1', [pagoAlicuota.idpago, pagoAlicuota.idresidente, pagoAlicuota.anio, pagoAlicuota.mes, pagoAlicuota.fechapago, pagoAlicuota.valor, pagoAlicuota.estado])
+    let results = await pool.query('UPDATE pagoalicuota SET idresidente=$2, anio=$3, mes=$4, fechapago=$5, valor=$6, estado=$7, verificar=$8, numerotramite=$9, banco=$10, comprobante=$11  WHERE idpago=$1', [pagoAlicuota.idpago, pagoAlicuota.idresidente, pagoAlicuota.anio, pagoAlicuota.mes, pagoAlicuota.fechapago, pagoAlicuota.valor, pagoAlicuota.estado, pagoAlicuota.verificar, pagoAlicuota.numerotramite, pagoAlicuota.banco, pagoAlicuota.comprobante])
     return pagoAlicuota
 }
 

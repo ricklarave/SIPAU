@@ -1,4 +1,4 @@
-obtenerMesAlquiler(9);
+obtenerMesAlquiler(8);
 
 
 //2. Metodo para generar pago, valor a pagar inicia en 90
@@ -23,6 +23,27 @@ function obtenerMesAlquiler(idresidente) {
                 console.log('Inicio a alquilar en el mes: ' + mesIniciaAlquilar + ' Anio: ' + anioIniciaAlquilar)
 
                 generarPago(anioIniciaAlquilar, mesIniciaAlquilar, idresidente)
+                var data =
+                {
+
+                    "idpago": idpago,
+                    "idresidente": idresidente,
+                    "anio": anio,
+                    "mes": mes,
+                    "fechapago": fechapago,
+                    "valor": valor,
+                    "estado": estado,
+                    "verificar": verificar,
+                    "numerotramite": numerotramite,
+                    "banco": banco,
+                    "comprobante": comprobante
+
+                }
+
+
+
+
+
             }
         }
     });
@@ -71,7 +92,7 @@ function generarPago(anioP, mesP, idresidenteP) {
 
 
         for (let i = 0; i < respuesta.data.length; i++) {
-            
+
             var ultimoMesPagoBD = respuesta.data[i].mes
             var ultimoAnioPagoBD = respuesta.data[i].anio
 
@@ -80,19 +101,23 @@ function generarPago(anioP, mesP, idresidenteP) {
             if (respuesta.data[i].mes <= mm || respuesta.data[i].anio <= yyyy) {
                 console.log(respuesta.data[i])
                 console.log(ultimoMesPagoBD + ' es el ultimo mes de pago registrado anio ' + ultimoAnioPagoBD)
+
+
+
+
             }
 
 
         }
 
 
-        if (respuesta.data.length >0) {
+        if (respuesta.data.length > 0) {
 
-            for (let i = mesP+1; i <= mm; i++) {
+            for (let i = mesP + 1; i <= mm; i++) {
 
-                
+
                 if (ultimoMesPagoBD != mm) {
-                    
+
                     diasMes = new Date(ultimoAnioPagoBD, i, 0).getDate();
 
                     let idresidente = idresidenteP
@@ -127,19 +152,19 @@ function generarPago(anioP, mesP, idresidenteP) {
                         },
                     });
 
-                }else{
-                    
+                } else {
+
                 }
 
             }
-        }else if(respuesta.data.length == 0){
+        } else if (respuesta.data.length == 0) {
 
-            for (let i = mesP;i <= mm; i++) {
+            for (let i = mesP; i <= mm; i++) {
                 console.log('Hola')
 
                 if (ultimoMesPagoBD != mm) {
                     console.log('Genra pago')
-                    
+
 
                     diasMes = new Date(yyyy, i, 0).getDate();
 
@@ -175,8 +200,8 @@ function generarPago(anioP, mesP, idresidenteP) {
                         },
                     });
 
-                }else{
-                    
+                } else {
+
                 }
 
             }
@@ -187,9 +212,67 @@ function generarPago(anioP, mesP, idresidenteP) {
 
     });
 
+
 }
 
-    
+function actualizarPagos() {
+
+    let hoy = new Date();
+
+    let dd = hoy.getDate();
+    let mm = hoy.getMonth() + 1;
+    let yyyy = hoy.getFullYear();
+
+    let ultimoDiaMes = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
+    let diasMes = new Date(anioP, mesP, 0).getDate();
+
+    //actualizar fechas de pago y su valor
+    //actualizar segun los datos que se carguen
+
+
+
+    // let idpago=
+    // let idresidente=
+    // let anio=
+    // let mes=
+    // let fechapago
+    // let valor
+    // let estado
+    // let verificar
+    // let numerotramite
+    // let banco
+    // let comprobante
+
+    var data =
+    {
+
+        "idpago": idpago,
+        "idresidente": idresidente,
+        "anio": anio,
+        "mes": mes,
+        "fechapago": fechapago,
+        "valor": valor,
+        "estado": estado,
+        "verificar": verificar,
+        "numerotramite": numerotramite,
+        "banco": banco,
+        "comprobante": comprobante
+
+    }
+
+    $.ajax({
+        url: "/pagoAlicuota",
+        type: "PUT",
+        data: data,
+        success: function (result, status) {
+            if (status == "success") {
+                alert("Pago Actualizado");
+            } else {
+                alert("Error al actualizar el pago")
+            }
+        },
+    });
+}
 
 
 function listarPago(idresidente) {

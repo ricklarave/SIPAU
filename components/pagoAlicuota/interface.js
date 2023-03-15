@@ -5,7 +5,7 @@ const controller = require('./controller')
 const route = express.Router()
 
 route.get('/', function (req, res) {
-    const filtro_pagoAlicuota = req.query.parametro;
+    const filtro_pagoAlicuota = req.query.parametro || "";
     controller.get_pagoAlicuota(filtro_pagoAlicuota)
         .then((data) => response.success(req, res, data, 200))
         .catch((error) => response.error(req, res, error, 500))
