@@ -1,15 +1,19 @@
 
 //CERRAR SESION
 function cierreLogin() {
-   alert("Cierre sesion");
+   alert("Cierre de sesion");
    
    window.open("http://localhost:3000/html/login.html");
    window.close("http://localhost:3000/html/menuAdministrador.html");
-
-   
 }
 
 //Botones de Administrador
+
+function obtenerId(){
+   var idusuario = localStorage.getItem("idusuario");
+   console.log("idusuario "+idusuario)
+}
+
 function gestionarResidente() {
      
    window.open("http://localhost:3000/html/residente.html");
@@ -29,7 +33,13 @@ function gestionarAdministrador() {
 }
 
 function verificarPagos() {
-     
 
+   window.open("http://localhost:3000/html/verificarPagos.html");  
+   window.close("http://localhost:3000/html/menuAdministrador.html");
 }
 
+function mostrarEsquema() {
+
+   window.open("http://localhost:3000/html/Residentes.html");  
+   window.close("http://localhost:3000/html/menuAdministrador.html");
+}

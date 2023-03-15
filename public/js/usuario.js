@@ -30,7 +30,6 @@ function listarUsuarios(parametroBuscar) {
 
             for (let i = 0; i < respuesta.data[0].length; i++) {
 
-               
                 var $tr = $("<tr></tr>");
                 $tr.append("<td>" + indice + "</td>");
                 $tr.append("<td>" + respuesta.data[0][i].cedulausuario + "</td>");
@@ -54,10 +53,9 @@ function listarUsuarios(parametroBuscar) {
     } else {
 
         var nombre = document.getElementById("buscarNombre").value;
-       
+
         $.get("/usuario?parametro=" + nombre, function (respuesta) {
-          
-            
+
             $("#pantalla").empty();
             var $pantalla = $("#pantalla");
 
@@ -156,7 +154,7 @@ function insertarUsuario() {
 
             if (status == "success") {
                 listarUsuarios();
-                limpiarFormulario();
+
                 alert("Usuario Guardado");
             } else {
                 alert("Error al registrar al Usuario")
@@ -171,29 +169,25 @@ function modificarUsuario(parametro) {
     document.getElementById("cedula_tabla").options.length = 0;
     $.get("/usuario?parametro=" + parametro.value, function (respuesta) {
 
-       
-
         for (let i = 0; i < respuesta.data[0].length; i++) {
-        document.getElementById("idModal").value = respuesta.data[0][i].idusuario;        
-        document.getElementById("cedulaUsuario").value = respuesta.data[0][i].cedulausuario;
-        document.getElementById("nombresUsuario").value = respuesta.data[0][i].nombresusuario;
-        document.getElementById("apellidosUsuario").value = respuesta.data[0][i].apellidosusuario;
-        document.getElementById("nick_Usuario").value = respuesta.data[0][i].nick_usuario;
-        document.getElementById("claveUsuario").value = respuesta.data[0][i].claveusuario;
-        document.getElementById("perfilUsuario").value = respuesta.data[0][i].perfilusuario;
-        document.getElementById("estadoUsuario").value = respuesta.data[0][i].estadousuario;
+            document.getElementById("idModal").value = respuesta.data[0][i].idusuario;
+            document.getElementById("cedulaUsuario").value = respuesta.data[0][i].cedulausuario;
+            document.getElementById("nombresUsuario").value = respuesta.data[0][i].nombresusuario;
+            document.getElementById("apellidosUsuario").value = respuesta.data[0][i].apellidosusuario;
+            document.getElementById("nick_Usuario").value = respuesta.data[0][i].nick_usuario;
+            document.getElementById("claveUsuario").value = respuesta.data[0][i].claveusuario;
+            document.getElementById("perfilUsuario").value = respuesta.data[0][i].perfilusuario;
+            document.getElementById("estadoUsuario").value = respuesta.data[0][i].estadousuario;
         }
 
     });
 }
 
-
-
 function buscarUsuario() {
     var cedulaUsuario = document.getElementById("cedulaUsuario").value
     var cedula_tabla = document.getElementById('cedula_tabla')
 
-    $.get("http://localhost:3000/usuario?parametro=" + cedulaUsuario+"*", function (data, status) {
+    $.get("http://localhost:3000/usuario?parametro=" + cedulaUsuario + "*", function (data, status) {
 
         mostrarCedulas(data, cedula_tabla)
 
@@ -335,7 +329,7 @@ function soloLetras(e) {
 
 function soloNumLetras(e) {
     key = e.keyCode
-    console.log("key", key) 
+    console.log("key", key)
     if (key != 46 && key != 39) { //46 es . y 39 es '
         tecla = String.fromCharCode(key).toLowerCase();
         letras = " abcdefghijklmnñopqrstuvwxyz0123456789";
@@ -359,7 +353,7 @@ function soloNumLetras(e) {
 
 function soloClave(e) {
     key = e.keyCode
-    console.log("key", key) 
+    console.log("key", key)
     if (key != 46 && key != 39) { //46 es . y 39 es '
         tecla = String.fromCharCode(key).toLowerCase();
         letras = "abcdefghijklmnñopqrstuvwxyz0123456789";
@@ -398,8 +392,8 @@ espacios = function (input) {
 }
 
 function Salir() {
-        
+
     window.open("http://localhost:3000/html/menuAdministrador.html"); //
     window.close("http://localhost:3000/html/usuario.html");
-     
- }
+
+}

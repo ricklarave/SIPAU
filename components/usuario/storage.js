@@ -6,10 +6,9 @@ async function get_usuario(filtro_usuario) {
     var results2 = null;
     var results3 = null;
     var prueba = [];
-
+    console.log("filtro_usuario /storage: "+filtro_usuario)
     if (!isNaN(filtro_usuario) ) {
         if (filtro_usuario == "") {
-           
             results = await pool.query('SELECT * FROM usuario')
             prueba = [results.rows]
 
@@ -41,6 +40,7 @@ async function get_usuario(filtro_usuario) {
             
 
         } else {
+            console.log("4")
             filtro_usuario = String(filtro_usuario);
             results = await pool.query("SELECT * FROM usuario WHERE nombresusuario like  '" + filtro_usuario + "%'")
             prueba = [results.rows]

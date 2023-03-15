@@ -45,7 +45,7 @@ function listarResidentes(parametroBuscar) {
                 $tr.append("<td>" + respuesta.data[i].apellidosresidente + "</td>");
                 $tr.append("<td>" + respuesta.data[i].telefonoresidente + "</td>");
                 $tr.append("<td>" + respuesta.data[i].correoresidente + "</td>");
-                $tr.append("<td>" + respuesta.data[i].fechaalquiler + "</td>");
+                $tr.append("<td>" + respuesta.data[i].fechaalquiler.substring(0, 10) + "</td>");
 
                 $tr.append("<td><button value='" + respuesta.data[i].idresidente + "' onclick='modificarResidente(this)' class='btn btn-primary modificar' data-toggle='modal' data-target='#fm-modal'>Modificar</button></td>");
                 $tr.append("<td><button type='button' value='" + respuesta.data[i].idresidente + "'  onclick='eliminarResidente(this)' class='btn btn-danger eliminar'>Elminar</button></td>");
@@ -80,9 +80,8 @@ function listarResidentes(parametroBuscar) {
                 $tr.append("<td>" + respuesta.data[i].apellidosresidente + "</td>");
                 $tr.append("<td>" + respuesta.data[i].telefonoresidente + "</td>");
                 $tr.append("<td>" + respuesta.data[i].correoresidente + "</td>");
-                // $tr.append("<td>" + respuesta.data[i].fechaalquiler + "</td>");
                 $tr.append("<td>" + respuesta.data[i].fechaalquiler.substring(0, 10) + "</td>");
-
+                
                 $tr.append("<td><button value='" + respuesta.data[i].idresidente + "' onclick='modificarResidente(this)' class='btn btn-primary modificar' data-toggle='modal' data-target='#fm-modal'>Modificar</button></td>");
                 $tr.append("<td><button type='button' value='" + respuesta.data[i].idresidente + "'  onclick='eliminarResidente(this)' class='btn btn-danger eliminar'>Elminar</button></td>");
 
@@ -136,7 +135,7 @@ function insertarResidente() {
             success: function (result, status) {
                 if (status == "success") {
                     listarResidentes();
-                    limpiarFormulario();
+                    
                     alert("Residente Actualizado");
                 } else {
                     alert("Error al actualizar el Residente")
@@ -206,9 +205,7 @@ function modificarResidente(parametro) {
         document.getElementById("apellidosResidente").value = respuesta.data[0].apellidosresidente;
         document.getElementById("telefonoResidente").value = respuesta.data[0].telefonoresidente;
         document.getElementById("correoResidente").value = respuesta.data[0].correoresidente;
-        // document.getElementById("fechaAlquiler").value = respuesta.data[0].fechaalquiler;
         document.getElementById("fechaAlquiler").value = respuesta.data[0].fechaalquiler.substring(0, 10);
-
     });
 
 }

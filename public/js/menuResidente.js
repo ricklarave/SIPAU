@@ -1,12 +1,10 @@
 
 //CERRAR SESION
 function cierreLogin() {
-   alert("Cierre sesion");
+   alert("Cierre de sesion");
    
    window.open("http://localhost:3000/html/login.html");
    window.close("http://localhost:3000/html/menuResidente.html");
-
-   
 }
 
 

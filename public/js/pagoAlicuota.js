@@ -1,13 +1,15 @@
-obtenerMesAlquiler(9);
+obtenerMesAlquiler(2);
 
 
 //2. Metodo para generar pago, valor a pagar inicia en 90
 //3. Metodo para actualizar pago, valor a pagar incrementa segun la mora a 100 o 110
 //4. Metodo para actualizar pago cuando el residente sube el comprobante. 
+  
 
 function obtenerMesAlquiler(idresidente) {
     $.get("/residente?parametro=" + idresidente, function (respuesta) {
 
+        
         if (respuesta.data.length == 0) {
             alert("No es residente")
         } else {
@@ -27,6 +29,8 @@ function obtenerMesAlquiler(idresidente) {
         }
     });
 }
+
+
 
 function generarPago(anioP, mesP, idresidenteP) {
 

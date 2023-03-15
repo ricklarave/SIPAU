@@ -100,7 +100,7 @@ function insertarAdministrador() {
             success: function (result, status) {
                 if (status == "success") {
                     listarAdministrador();
-                    limpiarFormulario();
+                    
                     alert("Administrador Actualizado");
                 } else {
                     alert("Error al actualizar el administrador")

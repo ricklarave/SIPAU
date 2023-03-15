@@ -8,6 +8,10 @@ function validarLogin(){
 
         alert("Bienvenido Administrador "+user);
 
+        http://localhost:3000/usuario?parametro=Sebastian
+
+        
+
         window.close("http://localhost:3000/html/login.html");
         window.open("http://localhost:3000/html/menuAdministrador.html");
          

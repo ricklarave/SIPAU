@@ -18,9 +18,7 @@ async function get_administrador( filtro_administrador ) {
         // results = await pool.query('SELECT * FROM residente WHERE nombresDueño = $1', [filtro_residente])
         results = await pool.query("SELECT * FROM administrador WHERE nombresadministrador like '"+ filtro_administrador +"%'")
     }
-
     return results.rows
-
 }
 
 
@@ -31,7 +29,6 @@ async function add_administrador( administrador ) {
 
 async function update_administrador( administrador ) {
     let results = await pool.query('UPDATE administrador SET cedulaadministrador=$2, nombresadministrador=$3, apellidosadministrador=$4 WHERE idadministrador=$1', [administrador.idadministrador,administrador.cedulaadministrador, administrador.nombresadministrador, administrador.apellidosadministrador ])
-    
     return administrador
 }
 
