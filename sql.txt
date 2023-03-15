@@ -1,3 +1,18 @@
+-- Database: SIPAU
+
+-- DROP DATABASE IF EXISTS "SIPAU";
+
+CREATE DATABASE "SIPAU"
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Spanish_Spain.1252'
+    LC_CTYPE = 'Spanish_Spain.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+	
+
 CREATE TABLE residente (
     idResidente BIGSERIAL NOT NULL,
     manzana integer NOT NULL,
@@ -10,12 +25,14 @@ CREATE TABLE residente (
     apellidosResidente character varying(50),
     telefonoResidente character varying(10),
     correoResidente character varying(40),
-    fechaAlquiler timestamp without time zone
+    
+	fechaAlquiler date
 );
 
 ALTER TABLE residente ADD CONSTRAINT PK_residente PRIMARY KEY (idResidente);
 
 CREATE TABLE administrador (
+
     idAdministrador BIGSERIAL NOT NULL,
     cedulaAdministrador character varying(10),
     nombresAdministrador character varying(50),
@@ -42,26 +59,109 @@ CREATE TABLE pagoAlicuota (
 	idresidente integer NOT NULL,
     anio integer NOT NULL,
     mes integer NOT NULL,
-    fechapago timestamp without time zone,
+	fechapago date,
     valor decimal(7,2),
-    estado character varying(10),--PENDIENTE =>0 --PAGADA =>1 --EN MORA =>2
-	idevidencia BIGSERIAL NOT NULL
+    estado character varying(10),	--PENDIENTE =>0 --PAGADA =>1 --EN MORA =>2
+	verificar character varying(10),	--RECHAZADO =>0 --VERIFICADO =>1 --PENDIENTE =>2
+	numerotramite character varying(10),
+	banco character varying(10),
+    comprobante bytea
 );
 
+
 ALTER TABLE pagoAlicuota ADD CONSTRAINT PK_pagoAlicuota PRIMARY KEY (idpago);
-ALTER TABLE pagoAlicuota ADD CONSTRAINT FK_pagoAlicuota FOREIGN KEY (idresidente) REFERENCES "residente"(idresidente);
+
+
 
 CREATE TABLE datosTransaccion (
     idevidencia integer NOT NULL,
 	numerotramite character varying(10),
 	banco character varying(10),
-    fechapago timestamp without time zone,
+    fechapago date,
     valorpago decimal(7,2),
     comprobante bytea
 );
 
+ALTER TABLE datosTransaccion ALTER COLUMN fechapago TYPE date;
+SELECT * FROM datosTransaccion
+
+INSERT INTO residente(manzana, villa, cedulaDueño, nombresDueño,
+					  apellidosDueño, cedulaResidente, nombresResidente, 
+					  apellidosResidente, telefonoResidente, 
+					  correoResidente, fechaAlquiler) 
+VALUES ('1', '1', '0964581578', 'Andrea', 'Pluas', '0945781845', 'Ana', 'Suarez','0959751195', 'pluasAna@gmail.com','10/03/2023'),
+       ('1', '2', '0964581579', 'Andres', 'Arboleda', '0945781846', 'Pedro', 'Sanchez','0959751196', 'sanchezP@gmail.com','10/03/2023'),
+	   ('1', '3', '0964581579', 'Marcos', 'Ramos', '0945781847', 'Luis', 'Sanchez','0959751197', 'LsanchezP@gmail.com','10/03/2023'),
+	   ('2', '1', '0964581579', 'Erick', 'Hernandez', '0945781848', 'Pablo', 'Sanchez','0959751198', 'PsanchezP@gmail.com','10/03/2023'),
+	   ('2', '2', '0964581579', 'Sebastian', 'Vallejo', '0945781849', 'Marcos', 'Sanchez','0959751199', 'SsanchezP@gmail.com','10/03/2023');
+		
+
+INSERT INTO pagoAlicuota 
+   (idresidente, anio,mes,fechapago,valor,estado)
+   VALUES ('1','2022','3' ,'3/3/2022'  	,'100','PAGADO'),
+   		  ('1','2022','4' ,'3/4/2022'  	,'200','PAGADO'),
+   		  ('1','2022','5' ,'3/5/2022'  	,'300','PAGADO'),
+   		  ('1','2022','6' ,'3/6/2022'  	,'400','PAGADO'),
+   		  ('1','2022','7' ,'3/7/2022'  	,'500','PAGADO'),
+   		  ('1','2022','8' ,'3/8/2022'  	,'600','PAGADO'),
+   		  ('1','2022','9' ,'3/9/2022'  	,'700','PAGADO'),
+   		  ('1','2022','10' ,'3/10/2022' ,'800','PAGADO'),
+   		  ('1','2022','11' ,'3/11/2022' ,'900','PAGADO'),
+   		  ('1','2022','12' ,'3/12/2022' ,'1000','PAGADO'),
+   		  ('1','2023','1' ,'3/1/2023'  	,'1100','PAGADO'),
+		  ('1','2022','2' ,'3/2/2023' 	,'1200','PAGADO');
+		  
+INSERT INTO pagoAlicuota 
+   (idresidente, anio,mes,fechapago,valor,estado)
+   VALUES ('2','2023','2' ,'3/2/2023'  	,'500','PAGADO'),
+   		  ('3','2023','2' ,'3/2/2023'  	,'900','PAGADO');
+   		   		 
 
 select * from residente;
 select * from administrador;
 select * from usuario;
+select * from pagoAlicuota;
+
+drop table pagoAlicuota;
+drop table residente;
+
+SELECT to_char(fechaAlquiler, 'DD/MM/YYYY') AS fecha_formateada FROM residente;
+
+SELECT fechaAlquiler FROM residente;
+SELECT * FROM residente 
+SELECT to_char(fechaAlquiler, 'DD/MM/YYYY') as fechaAlquiler FROM residente;
+
+SELECT idResidente, 
+	   manzana, 
+	   villa, 
+	   cedulaDueño,
+	   nombresDueño,
+	   apellidosDueño,
+	   cedulaResidente,
+	   nombresResidente,
+	   apellidosResidente,
+	   telefonoResidente,
+	   correoResidente,
+	   to_char(fechaAlquiler, 'DD-MM-YYYY') as fechaAlquiler_formato FROM residente;
+	   
+select idresidente, EXTRACT(MONTH FROM fechaalquiler) as mesInicioAlquiler 
+from residente
+WHERE idresidente= 1;
+
+select idresidente,idpago, EXTRACT(YEAR FROM fechapago) as aniopago, EXTRACT(MONTH FROM fechapago) as mespago, EXTRACT(DAY FROM fechapago) as diapago
+FROM pagoAlicuota
+WHERE idresidente= 1;
+
+SELECT * FROM pagoAlicuota WHERE idresidente =1
+
+
+
+SELECT PA.idresidente , R.fechaalquiler as mes
+FROM pagoAlicuota PA, residente R
+WHERE PA.idresidente = R.idresidente;
+
+SELECT * FROM pagoAlicuota WHERE idpago = 1
+SELECT * FROM pagoAlicuota WHERE idresidente = 1
+
+
 
