@@ -12,9 +12,13 @@ route.get('/', function (req, res) {
 })
 
 route.post('/', function (req, res) {
+    console.log(req.body.fechaAlquiler +' interface')
+
     controller.add_residente(req.body)
+
         .then((data) => response.success(req, res, data, 201))
         .catch((error) => response.error(req, res, error, 500))
+
 })
 
 route.put('/', function (req, res) {

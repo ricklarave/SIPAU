@@ -4,18 +4,18 @@ async function get_pagoAlicuota(filtro_pagoAlicuota) {
 
     let results = null
 
-console.log("****")
+    console.log("****")
 
     if (!isNaN(filtro_pagoAlicuota)) {       //TRUE=> VACIO || INT
         if (filtro_pagoAlicuota == "") {    //Vacio
             filtro_pagoAlicuota = filtro_pagoAlicuota || null;
-            results = await pool.query('SELECT * FROM pagoalicuota WHERE idresidente = $1 ', [filtro_pagoAlicuota])
+            results = await pool.query('SELECT * FROM pagoalicuota')
         
             console.log("----")
         
-        } else {                            //INT
+        } else {                            //INT- SEGUN EL ID DE RESIDENTE
             filtro_pagoAlicuota = parseInt(filtro_pagoAlicuota);
-            results = await pool.query('SELECT * FROM pagoalicuota WHERE idpago = $1', [filtro_pagoAlicuota])
+            results = await pool.query('SELECT * FROM pagoalicuota WHERE idresidente = $1', [filtro_pagoAlicuota])
        
             console.log("++++")
 
@@ -23,14 +23,17 @@ console.log("****")
     }
     else if (isNaN(filtro_pagoAlicuota)) { //FALSE=> STRING
         filtro_pagoAlicuota = String(filtro_pagoAlicuota);
-        results = await pool.query("SELECT * FROM pagoalicuota WHERE mes like '"+ filtro_pagoAlicuota +"%'")
-    
+        // results = await pool.query("SELECT * FROM pagoalicuota WHERE mes like '"+ filtro_pagoAlicuota +"%'")
+        results = await pool.query("SELECT idresidente, EXTRACT(MONTH FROM fechaalquiler) as mesInicioAlquiler FROM residente WHERE EXTRACT(MONTH FROM fechaalquiler) like '"+ filtro_pagoAlicuota +"%'")
+
         console.log("/////")
 
     }
 
     return results.rows
 }
+
+
 
 async function add_pagoAlicuota(pagoAlicuota) {
     let results = await pool.query('INSERT INTO pagoalicuota (idresidente, anio, mes, fechapago, valor, estado) VALUES ($1, $2, $3, $4, $5, $6)', [pagoAlicuota.idresidente, pagoAlicuota.anio, pagoAlicuota.mes, pagoAlicuota.fechapago, pagoAlicuota.valor, pagoAlicuota.estado])
